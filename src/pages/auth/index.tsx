@@ -1,22 +1,39 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Stack } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import assets from '@/assets';
+import Navbar from '@/layout/navbar';
 
-const AuthPage = () => {
-  const theme = useTheme();
-
+const AuthLayout = () => {
   return (
-    <Box
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Typography color={theme.palette.primary.main} variant="h6">
-        This is Auth Page Test
-      </Typography>
-    </Box>
+    <Stack>
+      <Navbar />
+      <Box
+        sx={{
+          paddingY: 4,
+          paddingX: 3,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 5,
+          flexDirection: { xs: 'column', md: 'row' },
+        }}
+      >
+        <Box>
+          <img
+            src={assets.imageMan}
+            alt="Interview Illustration"
+            style={{
+              width: 'auto',
+              height: 'auto',
+              maxWidth: '100%',
+              maxHeight: '100%',
+            }}
+          />
+        </Box>
+        <Outlet />
+      </Box>
+    </Stack>
   );
 };
 
-export default AuthPage;
+export default AuthLayout;
